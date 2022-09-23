@@ -22,6 +22,10 @@ build-linux:
 	mkdir -p dist
 	GOOS=linux $(GOBUILD) -tags "netgo osusergo" -a -ldflags $(BUILDFLAGS) -o dist/kr-linux ./cmd/kiterunner
 
+build-macos-arm64:
+	mkdir -p dist
+	GOOS=darwin GOARCH=arm64 $(GOBUILD) -tags "netusergo osusergo" -a -ldflags $(BUILDFLAGS) -o dist/kr-m1 ./cmd/kiterunner
+
 build-bench-linux:
 	mkdir -p dist
 	GOOS=linux $(GOBUILD) -tags "netgo osusergo" -a -ldflags "$(SHORTBUILDFLAGS)" -o dist/benchserv ./cmd/testServer/main.go
